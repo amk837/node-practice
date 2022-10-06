@@ -1,0 +1,52 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true
+  },
+  "extends": "airbnb-base",
+  "overrides": [],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "rules": {
+    "new-cap": [2, { "capIsNew": false, "newIsCap": false }],
+    "comma-dangle": [2, "never"],
+    "brace-style": [2, "1tbs"],
+    "func-names": 0,
+    "no-multi-spaces": 0,
+    "no-console": 1,
+    "eol-last": 0,
+    "curly": [1, "multi-line"],
+    "vars-on-top": 1,
+    "camelcase": 1,
+    "indent": ["error", "tab"],
+    "no-tabs": 0,
+    "one-var": 1,
+    "global-require": "error",
+    "max-len": [2, 150, 2],
+    "no-param-reassign": 1,
+    "no-unused-expressions": [0],
+    "no-multi-str": 0,
+    "newline-per-chained-call": 1,
+    "space-before-function-paren": ["error", "never"],
+    "object-curly-spacing": ["error", "never"],
+    "no-underscore-dangle": 0,
+    "no-await-in-loop": "off",
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "ForInStatement",
+        "message": "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array."
+      },
+      {
+        "selector": "LabeledStatement",
+        "message": "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand."
+      },
+      {
+        "selector": "WithStatement",
+        "message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
+      }
+    ]
+  }
+}

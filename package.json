@@ -1,0 +1,24 @@
+{
+  "name": "node-course",
+  "version": "1.0.0",
+  "description": "This repo follow the node course by mosh hamedani",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amk837/node-practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amk837/node-practice/issues"
+  },
+  "homepage": "https://github.com/amk837/node-practice#readme",
+  "devDependencies": {
+    "eslint": "^8.24.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}
