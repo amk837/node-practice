@@ -4,7 +4,9 @@
   "description": "This repo follow the node course by mosh hamedani",
   "main": "app.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "npm run test",
+    "start": "nodemon app.js",
+    "lint": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,9 @@
     "eslint": "^8.24.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1"
   }
 }
