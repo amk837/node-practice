@@ -8,10 +8,10 @@ router.get(local.getCourses, localControllers.getCourses);
 
 router.get(local.getCourse, localControllers.getCourse);
 
-router.post(local.createCourse);
+router.post(local.createCourse, localControllers.createCourse);
 
-router.put(local.updateCourse);
+router.put(local.updateCourse, localControllers.updateCourse);
 
-router.delete(local.deleteCourse);
+router.delete(local.deleteCourse, localControllers.deleteCourse);
 
 exports.coursesRouter = router;
