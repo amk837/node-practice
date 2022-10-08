@@ -1,6 +1,6 @@
 const express = require('express');
 const {constants} = require('../utils/constants');
-const {routers} = require('../views');
+const {routers} = require('../routes');
 const on404 = require('./404');
 const crossOrigin = require('./cross-origin');
 
