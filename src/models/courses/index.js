@@ -2,7 +2,7 @@ const {STRING, BIGINT} = require('sequelize');
 const {db} = require('..');
 const {modelUtils} = require('../../utils/models');
 
-exports.coursesModel = db.sequelize.define('course', {
+exports.coursesModel = db.define('course', {
 	name: {
 		type: STRING,
 		validate: {
