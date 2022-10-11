@@ -4,7 +4,7 @@ const Joi = require('joi');
 const courses = [];
 
 const getCourses = (req, res) => {
-	res.send(courses);
+	res.json(courses);
 };
 
 const validateCourse = (course) => {
@@ -22,13 +22,13 @@ const createCourse = (req, res) => {
 	const {error, value} = validateCourse(req.body);
 
 	if (error) {
-		res.status(400).send(getErrors(error));
+		res.status(400).json(getErrors(error));
 		return;
 	}
 
 	const course = {...value, id: courses.length + 1};
 	courses.push(course);
-	res.status(200).send(course);
+	res.status(200).json(course);
 };
 
 const getCourseById = (courseId) => {
@@ -43,11 +43,11 @@ const getCourse = (req, res) => {
 	const {course} = getCourseById(+req.params.id);
 
 	if (course) {
-		res.status(200).send(course);
+		res.status(200).json(course);
 		return;
 	}
 
-	res.status(404).send(INVALID_ID_RESPONSE);
+	res.status(404).json(INVALID_ID_RESPONSE);
 };
 
 const updateCourse = (req, res) => {
@@ -57,13 +57,13 @@ const updateCourse = (req, res) => {
 		const {error, value} = validateCourse({...course, ...req.body});
 		if (value) {
 			courses.splice(index, 1, value);
-			res.status(200).send(value);
+			res.status(200).json(value);
 			return;
 		}
 
-		res.status(400).send(getErrors(error));
+		res.status(400).json(getErrors(error));
 	}
-	res.status(404).send(INVALID_ID_RESPONSE);
+	res.status(404).json(INVALID_ID_RESPONSE);
 };
 
 const deleteCourse = (req, res) => {
@@ -71,11 +71,11 @@ const deleteCourse = (req, res) => {
 
 	if (index >= 0) {
 		const course = courses.splice(index, 1);
-		res.status(200).send(course);
+		res.status(200).json(course);
 		return;
 	}
 
-	res.status(400).send(INVALID_ID_RESPONSE);
+	res.status(400).json(INVALID_ID_RESPONSE);
 };
 
 exports.local = {

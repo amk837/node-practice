@@ -4,9 +4,9 @@ const {modelUtils} = require('../../../utils/models');
 const createCourse = async(req, res) => {
 	try {
 		const course = await coursesModel.create(req.body);
-		res.status(200).send(course);
+		res.status(200).json(course);
 	} catch (err) {
-		res.status(400).send({errors: modelUtils.extractErrorMessages(err.errors)});
+		res.status(400).json({errors: modelUtils.extractErrorMessages(err.errors)});
 	}
 };
 
@@ -15,12 +15,12 @@ const getCourse = async(req, res) => {
 		const course = await coursesModel.findByPk(req.params.id);
 
 		if (!course) {
-			res.status(404).send({error: 'No course found with given id'});
+			res.status(404).json({error: 'No course found with given id'});
 			return;
 		}
-		res.status(200).send(course);
+		res.status(200).json(course);
 	} catch (err) {
-		res.status(404).send({errors: modelUtils.extractErrorMessages(err.errors)});
+		res.status(404).json({errors: modelUtils.extractErrorMessages(err.errors)});
 	}
 };
 
@@ -31,7 +31,7 @@ const getCourses = async(req, res) => {
 
 	const total = await coursesModel.count();
 	const courses = await coursesModel.findAll({limit: perPage * page, offset: perPage * (page - 1)});
-	res.status(200).send({
+	res.status(200).json({
 		total, page, perPage, courses
 	});
 };
@@ -40,15 +40,15 @@ const updateCourse = async(req, res) => {
 	try {
 		const course = await coursesModel.findByPk(req.params.id);
 		if (!course) {
-			res.status(404).send({error: 'No course found with given id'});
+			res.status(404).json({error: 'No course found with given id'});
 			return;
 		}
 
 		await course.update({...req.body});
 
-		res.status(200).send(course);
+		res.status(200).json(course);
 	} catch (err) {
-		res.status(404).send(modelUtils.extractErrorMessages(err.errors));
+		res.status(404).json(modelUtils.extractErrorMessages(err.errors));
 	}
 };
 
@@ -56,14 +56,14 @@ const deleteCourse = async(req, res) => {
 	try {
 		const deletedCourse = await coursesModel.findByPk(req.params.id);
 		if (!deletedCourse) {
-			res.status(404).send({error: 'No course found with given id'});
+			res.status(404).json({error: 'No course found with given id'});
 			return;
 		}
 		deletedCourse.destroy();
 
-		res.status(200).send(deletedCourse);
+		res.status(200).json(deletedCourse);
 	} catch (err) {
-		res.status(404).send(modelUtils.extractErrorMessages(err.errors));
+		res.status(404).json(modelUtils.extractErrorMessages(err.errors));
 	}
 };
 
