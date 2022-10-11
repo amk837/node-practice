@@ -1,0 +1,7 @@
+{
+  "port": 3000,
+  "name": "mydb",
+  "user": "root",
+  "password": "1234",
+  "type": "mysql"
+}
