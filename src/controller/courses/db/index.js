@@ -38,18 +38,15 @@ const getCourses = async(req, res) => {
 
 const updateCourse = async(req, res) => {
 	try {
-		const [updated] = await coursesModel.update({...req.body}, {
-			where: {id: req.params.id}
-		});
-
-		if (!updated) {
+		const course = await coursesModel.findByPk(req.params.id);
+		if (!course) {
 			res.status(404).send({error: 'No course found with given id'});
 			return;
 		}
 
-		const newCourse = await coursesModel.findByPk(req.params.id);
+		await course.update({...req.body});
 
-		res.status(200).send(newCourse);
+		res.status(200).send(course);
 	} catch (err) {
 		res.status(404).send(modelUtils.extractErrorMessages(err.errors));
 	}
