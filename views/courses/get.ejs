@@ -1,0 +1,91 @@
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: auto;
+    border: black solid;
+    align-items: center;
+  }
+
+  .text-container {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 450px;
+  }
+
+  .text {
+    font-size: 24px;
+  }
+
+  h2 {
+    margin-right: 8px;
+    width: 200px;
+    text-align: left;
+  }
+  .control {
+    width: 40%;
+    margin: auto;
+    padding-top: 16px;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  button {
+    margin-left: 8px;
+    height: 20px;
+  }
+  a {
+    text-decoration: none;
+  }
+  
+  .submit {
+    margin-bottom: 8px;
+  }
+  
+  input {
+    width: 250px;
+  }
+
+  h2 {
+    width: 200px;
+  }
+
+  .message-container {
+    padding: 4px 0px;
+  }
+
+</style>
+<% if (error) { %>
+  <%= error %>
+<% } %>
+
+<% if (!error) { %>
+  <div class="control">
+    <form method="delete">
+      <button type="submit">delete</button>
+    </form>
+    <button><a href="?edit=true">edit</a></button>
+  </div>
+  <div class="message-container">
+    <% for(let i of [message, ...(errors || [])]) { %>
+      <% if (i) { %>
+        <li><%= i %></li>
+      <% } %>
+    <% } %>
+  </div>
+  <div class="container">
+    <div class="text-container">
+      <h2>Name: </h2>
+      <input class="text" type="text" value="<%=course.name%>" contenteditable="<%= edit %>"></input>
+    </div>
+    <div class="text-container">
+      <h2>Credit Hours: </h2>
+      <input class="text" type="number" min="1" max="4" value="<%= course.creditHours %>" contenteditable="<%= edit %>"></input>
+    </div>
+
+    <% if (edit) { %>
+      <button class="submit" type="submit">save changes</button>
+    <% } %>
+  </div>
+<% } %>

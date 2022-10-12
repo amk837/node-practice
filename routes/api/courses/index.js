@@ -1,6 +1,6 @@
 const express = require('express');
-const {courses: {local: localControllers, db}} = require('../../controller/courses');
-const {routes: {courseRoutes}} = require('../../utils/constants/routes');
+const {courses: {local: localControllers, db}} = require('../../../controller/courses');
+const {routes: {courseRoutes}} = require('../../../utils/constants/routes');
 
 const router = express.Router();
 

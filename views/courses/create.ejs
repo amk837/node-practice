@@ -1,0 +1,65 @@
+<style>
+  .container {
+    width: 40%;
+    border: black solid;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .input-container {
+    width: 100%;
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .label {
+    font-size: 20px;
+    width: 30%;
+  }
+
+  .input {
+    width: 40%;
+    font-size: 20px;
+  }
+
+  .button {
+    margin-top: 16px;
+    font-size: 20px;
+    ;
+  }
+  .message-container {
+    padding: 4px 0px;
+  }
+</style>
+<div class="container">
+  <h2>Create Form</h2>
+  <div class="message-container">
+    <% for(let i of [message, ...(errors || [])]) { %>
+      <% if (i) { %>
+        <li><%= i %></li>
+      <% } %>
+    <% } %>
+  </div>
+  <form class="form" method="post" action="" enctype="application/x-www-form-urlencoded">
+    <div class="input-container">
+      <div class="label">Name: </div>
+      <input class="input" name="name" placeholder="enter name" />
+    </div>
+    <div class="input-container">
+      <div class="label">Credit Hours: </div>
+      <input class="input" name="creditHours" placeholder="enter credit hours" type="number" min="1" max="4" />
+    </div>
+
+    <button class="button" type="submit">create course</button>
+  </form>
+</div>
