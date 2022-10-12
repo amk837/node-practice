@@ -4,7 +4,10 @@
   "description": "This repo follow the node course by mosh hamedani",
   "main": "app.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "npm run test",
+    "prod": "NODE_ENV='production' node app.js",
+    "lint": "eslint . --fix",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +20,17 @@
   },
   "homepage": "https://github.com/amk837/node-practice#readme",
   "devDependencies": {
+    "@types/express": "^4.17.14",
     "eslint": "^8.24.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0"
+  },
+  "dependencies": {
+    "convict": "^6.2.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "joi": "^17.6.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.24.0"
   }
 }
