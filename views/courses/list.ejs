@@ -1,0 +1,50 @@
+<%
+  const pages = total / perPage + 1;
+  const [minPage, maxPage] = [Math.max(1, page - 1), Math.min(pages, page + 1)];
+%>
+<style>
+  .list-container {
+    border: black solid;
+    width: 50%;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height:  100%;
+  }
+  li {
+    text-decoration: none;
+    margin-bottom: 8px;
+  }
+  a {
+    text-decoration: none;
+    font-size: 24px;
+  }
+
+  a.pagingation-item {
+    color: black;
+    margin-left: 8px;
+  }
+</style>
+<div class="container">
+  <h2>Courses List</h2>
+  <button><a href="create">create</a></button>
+  <ul class="list-container">
+    <% for(let i of courses) { %>
+      <li>
+        <a href="<%= i.id %>">
+          <%= i.name %>
+        </a>
+      </li>
+      <% } %>
+  </ul>
+  <div class="pagination">
+    <a class="pagination-item" href="?page=<%= minPage %>">&lt</a>
+    <% for(let i = 1; i <= pages; i++) { %>
+      <a class="pagination-item" href="?page=<%= i %>"><%= i %></a>
+    <% } %>
+    <a class="pagination-item" href="?page=<%= maxPage %>">&gt</a>
+  </div>
+</div>

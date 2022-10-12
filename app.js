@@ -1,9 +1,11 @@
 const express = require('express');
-const {port} = require('./src/config');
-const {setUpMiddlewares} = require('./src/middlewares');
-const {db} = require('./src/models');
+const {port} = require('./config');
+const {setUpMiddlewares} = require('./middlewares');
+const {db} = require('./models');
 
 const app = express();
+
+app.set('view engine', 'ejs');
 
 setUpMiddlewares(app);
 
