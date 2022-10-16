@@ -68,7 +68,7 @@
     <button><a href="?edit=true">edit</a></button>
   </div>
   <div class="message-container">
-    <% for(let i of [message, ...(errors || [])]) { %>
+    <% for(let i of [message, ...(error || [])]) { %>
       <% if (i) { %>
         <li><%= i %></li>
       <% } %>
