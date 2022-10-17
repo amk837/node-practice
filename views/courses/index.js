@@ -11,7 +11,7 @@ const createCourse = async(req, res) => {
 		await coursesModel.create(req.body);
 		res.render('courses/create', ({message: 'coursed added successfully', errors: null}));
 	} catch (err) {
-		res.render('courses/create', ({message: null, errors: modelUtils.extractErrorMessages(err.errors)}));
+		res.status(400).render('courses/create', ({message: null, errors: modelUtils.extractErrorMessages(err.errors)}));
 	}
 };
 
@@ -20,14 +20,15 @@ const getCourse = async(req, res) => {
 		const course = await coursesModel.findByPk(req.params.id);
 
 		if (!course) {
-			res.render({error: 'No course found with given id'});
+			res.status(404).render({error: 'No course found with given id'});
 			return;
 		}
-		res.render('courses/get', {
+
+		res.status(200).render('courses/get', {
 			course, error: null, edit: !!req?.query?.edit, message: null
 		});
 	} catch (err) {
-		res.render({error: modelUtils.extractErrorMessages(err.errors), edit: !!req?.query?.edit, message: null});
+		res.status(400).render({error: modelUtils.extractErrorMessages(err.errors), edit: !!req?.query?.edit, message: null});
 	}
 };
 

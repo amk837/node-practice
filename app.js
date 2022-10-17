@@ -11,6 +11,8 @@ setUpMiddlewares(app);
 
 db.sync({alter: true});
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
 	console.log(`server running on localhost:${port}`);
 });
+
+module.exports = server;
